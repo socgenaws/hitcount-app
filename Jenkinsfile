@@ -13,7 +13,7 @@ pipeline {
                sh "docker tag web devopsjuly2017/web:4.0"
             }     
         }
-        stage('docker-build') {
+        stage('docker-push') {
             steps { 
               withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerpass')]) {
                     sh 'docker login -u "devopsjuly22017" -p "${dockerpass}"'

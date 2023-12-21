@@ -11,6 +11,7 @@ pipeline {
             steps {
                sh "docker build -t web ."
                sh "docker tag web devopsjuly22017/web:4.0"
+               sh "docker tag web:latest 675467602881.dkr.ecr.us-east-1.amazonaws.com/web:4.0"
             }     
         }
         stage('docker-push') {
@@ -18,6 +19,14 @@ pipeline {
               withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerpass')]) {
                     sh 'docker login -u "devopsjuly22017" -p "${dockerpass}"'
                     sh "docker push devopsjuly22017/web:4.0"
+              }
+            }     
+        }
+        stage('ecr-push') {
+            steps { 
+              withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerpass')]) {
+                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 675467602881.dkr.ecr.us-east-1.amazonaws.com'
+                    sh "docker push 675467602881.dkr.ecr.us-east-1.amazonaws.com/web:4.0"
               }
             }     
         }

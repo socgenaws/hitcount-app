@@ -24,9 +24,8 @@ pipeline {
         }
         stage('ecr-push') {
             steps { 
-              withCredentials([string(credentialsId: 'dockerpassword', variable: 'dockerpass')]) {
-                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 675467602881.dkr.ecr.us-east-1.amazonaws.com'
-                    sh "docker push 675467602881.dkr.ecr.us-east-1.amazonaws.com/web:4.0"
+              withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {                    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 675467602881.dkr.ecr.us-east-1.amazonaws.com'
+                sh "docker push 675467602881.dkr.ecr.us-east-1.amazonaws.com/web:4.0"
               }
             }     
         }

@@ -45,11 +45,12 @@ pipeline {
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
 
-                sshagent (credentials: ['ubuntu']) {
-                        sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 675467602881.dkr.ecr.us-east-1.amazonaws.com'
-                        sh 'scp -o StrictHostKeyChecking=no deploy.sh ubuntu@172.31.81.28:/tmp/'
-                        sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.81.28 sh /tmp/deploy.sh'
-                    }
+                    sshagent (credentials: ['ubuntu']) {
+                            sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 675467602881.dkr.ecr.us-east-1.amazonaws.com'
+                            sh 'scp -o StrictHostKeyChecking=no deploy.sh ubuntu@172.31.81.28:/tmp/'
+                            sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.81.28 sh /tmp/deploy.sh'
+                        }
+                }
             }     
         }
     }

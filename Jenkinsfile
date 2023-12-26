@@ -39,7 +39,8 @@ pipeline {
         stage('deployment') {
             steps { 
               sshagent (credentials: ['ubuntu']) {
-                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.81.28 sh deploy.sh'
+                    sh 'scp -o StrictHostKeyChecking=no -l ubuntu deploy.sh 172.31.81.28:/tmp/'
+                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.81.28 sh /tmp/deploy.sh'
                 }
             }     
         }

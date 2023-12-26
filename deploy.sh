@@ -7,5 +7,5 @@ git clone https://github.com/socgenaws/hitcount-app.git
 cd hitcount-app
 docker-compose stop
 docker-compose rm -f
-docker-compose up -d
+docker-compose up -d --force-recreate
 docker-compose ps 

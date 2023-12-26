@@ -6,6 +6,6 @@ fi
 git clone https://github.com/socgenaws/hitcount-app.git
 cd hitcount-app
 docker-compose stop
-docker-compose rm 
+docker-compose rm -f
 docker-compose up -d
 docker-compose ps 

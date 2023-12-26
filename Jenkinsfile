@@ -39,7 +39,7 @@ pipeline {
         stage('deployment') {
             steps { 
               sshagent (credentials: ['ubuntu']) {
-                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.81.28 docker-compose up -d'
+                    sh 'ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.81.28 sh deploy.sh'
                 }
             }     
         }

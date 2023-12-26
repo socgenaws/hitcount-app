@@ -9,6 +9,7 @@ pipeline {
         }
         stage('docker-build') {
             steps {
+               sh "sudo chown jenkins:jenkins /var/run/docker.sock"
                sh "docker build -t web ."
                sh "docker tag web devopsjuly22017/web:4.0"
                sh "docker tag web:latest 675467602881.dkr.ecr.us-east-1.amazonaws.com/web:4.0"

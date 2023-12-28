@@ -4,6 +4,5 @@ services:
     image: "devopsjuly22017/web:latest"
     ports:
      - "5000:5000"
-    replicas: 3
   redis:
     image: "redis:alpine"

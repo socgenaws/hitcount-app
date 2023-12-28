@@ -3,19 +3,19 @@
 https://blog.docker.com/2016/12/understanding-docker-networking-drivers-use-cases/
 
 
-mkdir -p /etc/systemd/system/docker.service.d
-touch  /etc/systemd/system/docker.service.d/options.conf
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo touch  /etc/systemd/system/docker.service.d/options.conf
 
-cat >> /etc/systemd/system/docker.service.d/options.conf
+sudo cat >> /etc/systemd/system/docker.service.d/options.conf
 EOF
 [Service]
 ExecStart=
 ExecStart=/usr/bin/dockerd -H unix:// -H tcp://0.0.0.0:2375
 EOF
 
-systemctl daemon-reload
-systemctl restart docker
-ps aux | grep dockerd
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo ps aux | grep dockerd
 
 
 docker -H tcp://remote-docker-host-ip:2375 docker info

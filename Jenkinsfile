@@ -38,7 +38,7 @@ pipeline {
         }
         stage('deployment') {
           steps { 
-              sh "docker service ls"
+              sh "docker -H tcp://172.31.81.28:2375 service ls"
           }
         }
         // stage('deployment') {

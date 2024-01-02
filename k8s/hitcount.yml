@@ -61,7 +61,6 @@ spec:
       name: redis
       labels:
         app: redis
-      namespace: dev
     spec:
       containers:
       - name: redis

@@ -1,5 +1,6 @@
 # https://eksctl.io/getting-started/
 # eksctl create cluster -f cluster.yml
+# eksctl delete cluster -f cluster.yml
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 

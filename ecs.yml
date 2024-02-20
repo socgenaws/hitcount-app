@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: "2010-09-09"
 Parameters:
   SubnetID:
     Type: String
-    Default: subnet-e58fafa9
+    Default: subnet-09377a43c76e65fdb
 Resources:
   Cluster:
     Type: AWS::ECS::Cluster
@@ -33,16 +33,6 @@ Resources:
         - IpProtocol: tcp
           FromPort: 8080
           ToPort: 8080
-          CidrIp: 0.0.0.0/0
-  NexusContainerSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupName: NexusContainerSecurityGroup
-      GroupDescription: Security group for nexus container
-      SecurityGroupIngress:
-        - IpProtocol: tcp
-          FromPort: 81
-          ToPort: 81
           CidrIp: 0.0.0.0/0
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
